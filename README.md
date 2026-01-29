@@ -6,3 +6,5 @@ My collection of UFC fighter stats!
 - Fighter rankings
 - Upcoming fights
 - Records
+
+Updated: Jan 29, 2026
