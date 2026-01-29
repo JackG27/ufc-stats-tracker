@@ -1,0 +1,36 @@
+name: UFC Stats Check
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+        
+      - name: Say hello
+        run: echo "Checking UFC stats!"
+        
+      - name: List all files
+        run: ls -la
+        
+      - name: Check README exists
+        run: |
+          if [ -f "README.md" ]; then
+            echo "✅ README.md found!"
+          else
+            echo "❌ README.md missing!"
+            exit 1
+          fi
+          
+      - name: Count fighter files
+        run: |
+          count=$(find fighters -name "*.md" 2>/dev/null | wc -l)
+          echo "Found $count fighter files"
+          if [ $count -ge 3 ]; then
+            echo "✅ Good job! Multiple divisions added!"
+          fi
