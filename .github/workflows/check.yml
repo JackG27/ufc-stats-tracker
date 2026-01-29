@@ -1,4 +1,4 @@
-name: UFC Stats Check
+name: UFC Check
 
 on:
   push:
@@ -6,30 +6,9 @@ on:
       - main
 
 jobs:
-  validate:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Get the code
-        uses: actions/checkout@v4
-        
-      - name: Say hello
-        run: echo "Checking UFC stats!"
-        
-      - name: List files
-        run: ls -la
-        
-      - name: Check README exists
-        run: |
-          if [ -f "README.md" ]; then
-            echo "README found!"
-          else
-            echo "README missing!"
-            exit 1
-          fi
-```
-
-6. **Scroll all the way down**
-
-7. **In the "Commit message" box, type:**
-```
-Add GitHub Actions workflow in correct location
+      - uses: actions/checkout@v4
+      - run: echo "UFC Stats workflow works!"
+      - run: ls
